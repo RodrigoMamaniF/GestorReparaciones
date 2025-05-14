@@ -1,0 +1,144 @@
+{% extends "layout.html" %}
+{%block title%} Panel {% endblock %}
+{% block cssDedicado %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/panel.css') }}">
+<link rel="shortcut icon" href="../static/img/ryr.ico" type="image/x-icon">
+{%endblock%}
+{% block scripts %}
+<script src="https://kit.fontawesome.com/36ffac426e.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+
+{% block body %}
+
+<header class="header">
+  <nav>
+    <div id="logo">
+      <a href="./index.html"><i class="fa-solid fa-laptop-code "></i></a>
+      <a class="logo-text" href="/indice">RyR Reparaciones</a>
+    </div>
+
+    <!-- Menu Hamburguesa-->
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+    <label for="menu-toggle" class="menu-toggle-icon">
+      <i class="fas fa-bars" aria-hidden="true"></i>
+    </label>
+
+
+    <ul class="nav-links desktop-nav">
+      {% if session['rol'] == 1 %}
+      <li><a href="#popular" id="user-name" class="admin-link">Administrador</a></li>
+      {%else%}
+      <li><a href="#popular" id="user-name" class="admin-link">Usuario</a></li>
+      {%endif%}
+      <li><a href="/logout" id="logout-button" class="btn-cac"><i class="fas fa-sign-in-alt"></i> Cerrar Sesión</a></li>
+    </ul>
+  </nav>
+</header>
+
+<aside>
+  <div class="sidebar-header">
+    <h2>Panel de Control</h2>
+    <p>Hola, {{ session['username'] }}!</p>
+  </div>
+
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link active" href="/panel">
+        <span class="icon-circle icon-panel"><i class="fas fa-tachometer-alt"></i></span> Panel/inicio
+      </a>
+      <span data-feather="home"></span>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/reparaciones">
+        <span class="icon-circle icon-repair"><i class="fas fa-tools"></i></span> Lista de Reparaciones</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/clientes">
+        <span class="icon-circle icon-client"><i class="fas fa-users"></i></span> Lista de Clientes</a>
+    </li>
+
+    <!-- Opciones para admin -->
+    {% if session['rol'] == 1 %}
+    <li class="nav-item">
+      <a class="nav-link" href="/usuarios">
+        <span class="icon-circle icon-user"><i class="fas fa-user-friends"></i></span> Lista de
+        Usuarios</a><!-- /Técnicos (que muestre sus clientes cant) -->
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">
+        <span class="icon-circle icon-empty"><i class="fas fa-exclamation-circle"></i></span> Vacío...</a>
+    </li>
+    {%endif%}
+  </ul>
+
+</aside>
+{% block contenidoMain %}
+<div class="contenido">
+  <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    <div
+      class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h1 class="h2">¡Bienvenido al sistema de gestión para sus reparaciones!</h1>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <a href="/clientes" class="card-link">
+          <div class="card text-white bg-primary mb-3">
+            <div class="card-body">
+              <h5 class="card-title">Total de clientes</h5>
+              <p class="card-text">{{total_clientes}}</p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-3">
+        <div class="card text-white bg-secondary mb-3">
+          <div class="card-body">
+            <a href="/pendientes">
+              <h5 class="card-title text-white">Reparaciones pendientes</h5>
+            </a>
+            <p class="card-text">{{total_reps_pendientes}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card text-white bg-success mb-3">
+          <div class="card-body">
+            <a href="/finalizadas">
+              <h5 class="card-title text-white">Reparaciones finalizadas</h5>
+            </a>
+            <p class="card-text">{{total_reps_finalizadas}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card text-white bg-danger mb-3">
+          <div class="card-body">
+            <a href="/canceladas">
+              <h5 class="card-title text-white">Reparaciones canceladas</h5>
+            </a>
+            <p class="card-text">{{total_reps_canceladas}}</p>
+          </div>
+        </div>
+      </div>
+      {% if session['rol'] == 1 %}
+      <div class="col-md-3">
+        <div class="card text-white bg-dark mb-3">
+          <div class="card-body">
+            <a href="/usuarios">
+              <h5 class="card-title text-white">Usuarios/Técnicos</h5>
+            </a>
+            <p class="card-text">{{total_usuarios}}</p>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+
+    </div>
+  </main>
+
+</div>
+
+{% endblock %}
+<!--{% endblock %}-->

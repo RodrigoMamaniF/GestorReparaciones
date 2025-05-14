@@ -1,0 +1,75 @@
+{% extends "panel.html" %}
+{%block title%} Crear reparación{% endblock %}
+{% block cssDedicado %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/panel.css') }}">
+<link rel="shortcut icon" href="../static/img/ryr.ico" type="image/x-icon">
+{%endblock%}
+
+{% block contenidoMain %}
+    <div class="contenido">
+        <div>
+        <h3>Agregar reparación</h3>
+        </div>
+        
+
+        <form method="post" action="/crear_reparacion">
+            {% if session['rol'] == 1 %}
+            <div class="form-group row col-sm-8 mb-2">
+                <p class="col-sm-2">Usuario:</p>
+                <select class="form-select form-select-sm" name="txtUser" id="txtUser">
+                    {% for usuario in usuarios %}
+                    <option value="{{ usuario[0] }}">
+                        {{ usuarios_dict[usuario[0]] }}
+                    </option>
+                    {% endfor %}
+                </select><br>
+            </div>
+            {%else%}
+            <div class="form-group row col-sm-8 mb-2">
+                <p class="col-sm-2">Usuario:</p>
+                <input  type="int" name="txtUser" id="txtUser"/> {{session['user_id'] }}  <br />
+                <!-- Arriba está adaptado. -->
+            </div>
+            {%endif%}
+
+            <div class="form-group row col-sm-8 mb-2">
+                <p class="col-sm-2">Cliente:</p>
+                <select class="form-select form-select-sm" name="txtCliente" id="txtCliente">
+                    {% for cliente in clientes %}
+                    <option value="{{ cliente[0] }}">
+                        {{ clientes_dict[cliente[0]] }}
+                    </option>
+                    {% endfor %}
+                </select><br>
+            </div>
+            <div class="form-group row col-sm-8 mb-2">
+                <p class="col-sm-2">Fecha:</p>
+                <input class="fecha col-sm-6" type="date" name="txtFecha" id="txtFecha" required /><br />
+            </div>
+            <div class="form-group row col-sm-8 mb-2">
+                <p class="col-sm-2">Descripción:</p>
+                <textarea class="form-control col-sm-6" name="txtDescripcion" id="txtDescripcion" required></textarea><br>
+            </div>
+            <div class="form-group row col-sm-8 mb-2">
+                <p class="col-sm-2">Costo:</p>
+                <input class="form-control" type="number" name="txtCosto" id="txtCosto" required /><br />
+            </div>
+            <div class="form-group row col-sm-8 mb-2">
+                <p class="col-sm-2">Existe:</p>
+                <select class="form-select form-select-sm" name="txtExiste" id="txtExiste">
+                    <option value="1" selected>Si</option>
+                    <option value="0">No</option>
+                </select><br>
+            </div>
+            <div class="form-group row col-sm-8 mb-2">
+                <p class="col-sm-2">Estado:</p>
+                <input class="form-control" type="text" name="txtEstado" id="txtEstado" value="pendiente" required /><br />
+            </div>
+            <input class="btn btn-success mb-3" type="submit" value="Agregar Reparación" />
+        </form>
+        
+        
+        
+    </div>
+    
+{%endblock%}

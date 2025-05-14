@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../static/img/ryr.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <link rel="stylesheet" href="../static/css/style - 6.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/36ffac426e.js" crossorigin="anonymous"></script>
+    
+    <title>RyR Reparaciones</title>
+    
+</head>
+
+<body>
+    
+    <header class="header">
+        <nav>
+            <div id="logo">
+                <a href="./index - copia (5).html"><i class="fa-solid fa-laptop-code"></i></a>
+                <a class="logo-text" href="./index - copia (5).html">RyR Reparaciones</a>
+            </div>
+            
+            <!-- Menu Hamburguesa-->
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            <label for="menu-toggle" class="menu-toggle-icon" aria-label="Abrir menú" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </label>
+
+            <!-- Navegador en escritorio-->
+            <ul class="nav-links desktop-nav">
+                <li> <a href="/register">Registrate</a></li>
+                <!--<li><a href="#popular">Reparaciones favoritas</a></li> -->
+                <li><a href="/contact">Contáctanos</a></li>
+<!--Se agrego id="login-item"--> <li id="login-item"><a href="/auth" class="btn-cac">
+                    <i class="fas fa-sign-in-alt"></i><span class="login-text"> Iniciar Sesión</span></a></li>
+            </ul>
+
+            <!-- Navegación móvil -->
+            <ul class="nav-links mobile-nav">
+                <li><a href="/register">Registrate</a></li>
+                <!-- <li><a href="#popular">Reparaciones favoritas</a></li> -->
+                <li><a href="/contact">Contáctanos</a></li>
+                <li id="login-item-mobile"><a href="/auth" class="btn-cac">Iniciar Sesión</a></li>
+            </ul>
+
+            <!-- Área para mostrar el nombre del usuario -->
+        <div id="user-info" class="user-info" style="display: none;">
+            <a href="#popular" id="user-name" class="admin-link">Administrador</a>
+            <!-- <span id="user-name">Administrador</span> -->
+            <a href="#" id="logout-button" class="btn-cac" onclick="logout()"><i class="fas fa-sign-in-alt"></i> Cerrar Sesión</a> <!-- Cambié el botón por un enlace con clase btn-cac -->
+        <!-- <button id="logout-button" onclick="logout()">Cerrar Sesión</button>  -->
+        </div>
+            <!-- Área para mostrar el nombre del usuario -->
+
+        </nav>
+    </header>
+
+
+    <main>
+        <section id="banner" class="d-flex">
+            <div class="banner-card container">
+            <h1 class="bright-text">Bienvenido a RyR Reperaciones</h1> <br>
+            <h2 class="bright-text">Tu sitio favorito de reparaciones</h2>
+            <!--<a href="./register - copia (5).html" class="btn-cac">Registrate</a> -->
+            </div>
+        </section>
+
+        <!-- Nueva sección: ¿Cómo trabajamos? -->
+    <section id="how-we-work" class="container">
+        <h2 class="title-como-trabajamos">¿Cómo trabajamos?</h2>
+        <div class="work-steps">
+            <div class="work-image">
+                <img src="../static/img/logo soporte tecnico1.webp" alt="Técnico" class="work-image">
+            </div>
+            <div class="work-details">
+            <div class="work-step">
+                <h3><i class="fas fa-comments"></i> Consulta</h3>
+                <p>Envíanos un WhatsApp, llámanos o consultanos a través de nuestro <a href="./contact.html" id="user-name" class="admin-link" >formulario</a><br>para acordar el ingreso de su equipo.</p>
+            </div>
+            <div class="work-step">
+                <h3><i class="fas fa-tools"></i> Diagnóstico</h3>
+                <p>Nuestros técnicos evalúan su computadora y le envían un presupuesto del costo de reparación y/o mantenimiento.</p>
+            </div>
+            <div class="work-step">
+                <h3><i class="fas fa-laptop"></i> Reparación</h3>
+                <p>Basándonos en el diagnóstico, un técnico repara tu PC realizando la solución apropiada. Esto puede incluir la sustitución de piezas defectuosas y la optimización del sistema operativo para mejorar el rendimiento.</p>
+                <!-- Asegúrate de cambiar la ruta de la imagen -->
+            </div>
+            </div>
+        </div>
+    </section>
+    <!-- Fin de la nueva sección -->
+
+
+
+        <!-- AGREGADP  Testimonios en Video-->
+        <section id="video-testimonials" class="container">
+            <h2 class="title-como-trabajamos"><br>Testimonios de Clientes</h2>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/tu_video" frameborder="0" allowfullscreen></iframe>
+                <p class="pc-item-detail-subtitle-v2"><br><br>
+            </div>
+        </section>
+        <!-- AGREGADP  Testimonios en Video-->
+
+
+
+
+        <section id="top-rated">
+
+            <div class="container">
+            <!--<h2 class="title-como-trabajamos">Testimonios de Clientes</h2> --> 
+                <div id="top-rated-list" class="pc-scroller">
+                    <div class="pc-item-v2">
+                        <div class="wrapper">
+                            <!-- <img src="./static/img/1.jpg" alt="">  -->
+                            <p class="pc-item-detail-title-v2">"Excelente servicio, mi computadora está como nueva!"</p>
+                            <p class="pc-item-detail-subtitle-v2">Juan Pérez</p>
+                        </div>
+                        
+                    </div>
+                    <div class="pc-item-v2">
+                        <div class="wrapper">
+                            <p class="pc-item-detail-title-v2">"Rápido y eficiente, muy recomendados."</p>
+                            <p class="pc-item-detail-subtitle-v2">María López</p>
+                        </div>
+                    </div>
+
+                    <div class="pc-item-v2">
+                        <div class="wrapper">
+                            <p class="pc-item-detail-title-v2">"Excelente atención al cliente, definitivamente volveré."</p>
+                            <p class="pc-item-detail-subtitle-v2">Diego Ruiz</p>
+                        </div>
+                    </div>
+                    
+                    <div class="pc-item-v2">
+                        <div class="wrapper">
+                            <p class="pc-item-detail-title-v2">"Me solucionaron un problema que otros no pudieron, ¡fantástico!"</p>
+                            <p class="pc-item-detail-subtitle-v2">Andrés Salazar</p>
+                        </div>
+                    </div>
+                    
+                    <div class="pc-item-v2">
+                        <div class="wrapper">
+                            <p class="pc-item-detail-title-v2">"Gran servicio, mi computadora funciona como nueva."</p>
+                            <p class="pc-item-detail-subtitle-v2">Lucía Gómez</p>
+                        </div>
+                    </div>
+
+                    <div class="pc-item-v2">
+                        <div class="wrapper">
+                            <p class="pc-item-detail-title-v2">"Rápido, eficiente y a un precio justo. Muy satisfecho."</p>
+                            <p class="pc-item-detail-subtitle-v2">Luis Fernández</p>
+                        </div>
+                    </div>
+
+                    <div class="pc-item-v2">
+                        <div class="wrapper">
+                            <p class="pc-item-detail-title-v2">"Recomiendo sus servicios, son los mejores en reparaciones."</p>
+                            <p class="pc-item-detail-subtitle-v2">Sofía Ramírez</p>
+                        </div>
+                    </div>
+
+                    <div class="pc-item-v2">
+                        <div class="wrapper">
+                            <p class="pc-item-detail-title-v2">"Gran experiencia, el servicio fue rápido y profesional."</p>
+                            <p class="pc-item-detail-subtitle-v2">Javier Torres</p>
+                        </div>
+                    </div>
+
+                    <div class="pc-item-v2">
+                        <div class="wrapper">
+                            <p class="pc-item-detail-title-v2">"Gran atención al cliente y precios justos."</p>
+                            <p class="pc-item-detail-subtitle-v2">Carlos García</p>
+                        </div>
+                    </div>
+
+                    <div class="pc-item-v2">
+                        <div class="wrapper">
+                            <p class="pc-item-detail-title-v2">"Mi computadora funciona como nueva, gracias por el servicio."</p>
+                            <p class="pc-item-detail-subtitle-v2">Ana Martínez</p>
+                        </div>
+                    </div>
+
+                    <div class="pc-item-v2">
+                        <div class="wrapper">
+                            <p class="pc-item-detail-title-v2">"El servicio fue rápido y eficiente. Estoy muy satisfecho con el resultado."</p>
+                            <p class="pc-item-detail-subtitle-v2">Lucía González</p>
+                        </div>
+                    </div>
+
+                    <div class="pc-item-v2">
+                        <div class="wrapper">
+                            <p class="pc-item-detail-title-v2">"Excelente atención al cliente, me mantuvieron informado en todo momento."</p>
+                            <p class="pc-item-detail-subtitle-v2">Fernando Pérez</p>
+                        </div>
+                    </div>
+
+                    <div class="pc-item-v2">
+                        <div class="wrapper">
+                            <p class="pc-item-detail-title-v2">"Repararon mi computadora en tiempo récord. ¡Los recomiendo al 100%!"</p>
+                            <p class="pc-item-detail-subtitle-v2">Claudia Martínez</p>
+                        </div>
+                    </div>
+
+                    <div class="pc-item-v2">
+                        <div class="wrapper">
+                            <p class="pc-item-detail-title-v2">"Me ayudaron a recuperar datos que creía perdidos. ¡Increíble!"</p>
+                            <p class="pc-item-detail-subtitle-v2">Valentina Castro</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <footer>
+            <a href="">Terminos y condiciones</a>
+            <a href="">Preguntas frecuentes</a>
+            <a href="">Ayuda</a>
+            <a href=""><i class="fas fa-question-circle"></i></a>
+            <div class="social-icons">
+            <a href="http://facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+            <a href="http://twitter.com" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="http://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="http://linkedin.com" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+    
+            </div>
+            <p>2025 R y R. Todos los derechos reservados </p>
+        </footer>
+
+        <button id="scrollToTopButton">&#9650;</button>
+
+        <script src="../static/js/index.js"></script>
+
+    </main>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+</body>
+
+</html>

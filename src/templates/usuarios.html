@@ -1,0 +1,38 @@
+{% extends "panel.html" %}
+{%block title%} Usuarios {% endblock %}
+{% block cssDedicado %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/panel.css') }}">
+<link rel="shortcut icon" href="../static/img/ryr.ico" type="image/x-icon">
+{%endblock%}
+
+{% block contenidoMain %}
+<div class="contenido">
+    <table class="table">
+        <h1>Lista de Usuarios</h1>
+        <a href="/crear_usuario" class="btn btn-success mb-3">Agregar usuario</a>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Admin</th>
+                <th>Email</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario in usuarios %}
+            <tr>
+                <td>{{ usuario[1] }}</td>
+                <td>{{ usuario[3] }}</td>
+                <td>{{ usuario[5] }}</td>
+                <td>
+                    <a href="/edit_usuario/{{ usuario[0] }}" class="btn btn-warning">Editar</a> |
+                    <a class="btn btn-danger" onclick="return confirm('¿Desea borrar la reparación?')"
+                        href="/borrar/{{ usuario[0] }}">Borrar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+{% endblock %}

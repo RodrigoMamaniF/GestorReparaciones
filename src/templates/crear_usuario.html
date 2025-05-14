@@ -1,0 +1,48 @@
+{% extends "panel.html" %}
+{%block title%} Crear cliente {% endblock %}
+{% block cssDedicado %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/panel.css') }}">
+<link rel="shortcut icon" href="../static/img/ryr.ico" type="image/x-icon">
+{%endblock%}
+
+{% block contenidoMain %}
+<div class="contenido">
+    <div>
+        <h3>Agregar cliente</h3>
+    </div>
+
+    <form method="post" action="/crear_usuario">
+        <div class="form-group row col-sm-8 mb-2">
+            <p class="col-sm-2">Nombre:</p>
+            <input class="form-control col-sm-6" type="text" name="nombre" id="nombre" required /><br />
+        </div>
+        <div class="form-group row col-sm-8 mb-2">
+            <p class="col-sm-2">Contraseña:</p>
+            <input class="form-control col-sm-6" type="password" name="password" id="password" required /><br />
+        </div>
+        <div class="form-group row col-sm-8 mb-2">
+            <p class="col-sm-2">Email:</p>
+            <input class="form-control col-sm-6" type="email" name="email" id="email" /><br />
+        </div>
+        <div class="form-group row col-sm-8 mb-2">
+            <p class="col-sm-2">Admin:</p>
+            <select class="form-select form-select-sm" name="admin" id="admin">
+                <option value="0" selected>No</option>
+                <option value="1">Si</option>
+            </select><br>
+        </div>
+        <div class="form-group row col-sm-8 mb-2">
+            <p class="col-sm-2">Existe:</p>
+            <select class="form-select form-select-sm" name="existe" id="existe">
+                <option value="1" selected>Si</option>
+                <option value="0">No</option>
+            </select><br>
+        </div>
+        <input class="btn btn-success mb-3" type="submit" value="Agregar Usuario" />
+    </form>
+
+
+
+</div>
+
+{%endblock%}

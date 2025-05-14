@@ -1,0 +1,435 @@
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    background-color: #f8f9fa; /* Color de fondo más claro */
+}
+.header {
+    width: 100%;
+    background-color: #62828f;
+    position: sticky;
+    top: 0;
+    /*left: 0;*/
+    z-index: 9999; 
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 60px; 
+    list-style: none; /* Sin viñetas */
+    
+    
+}
+.nav-item {
+    margin-bottom: 10px; /* Espacio entre los elementos de la lista */
+}
+.nav-link {
+    color: white; /* Color del texto */
+    text-decoration: none; /* Sin subrayado */
+    padding: 15px 10px; /* Aumenta el espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s, transform 0.3s; /* Transición suave */
+    display: flex; /* Usar flexbox para alinear icono y texto */
+    align-items: center; /* Centrar verticalmente */
+    
+}
+.nav-link i {
+    margin-right: 20px; /* Espacio entre el icono y el texto */
+    font-size: 1.5rem; /* Tamaño del icono */
+}
+.nav-link:hover {
+    /*background-color: rgba(255, 255, 255, 0.2); /* Color de fondo al pasar el mouse */
+    background-color: rgba(255, 255, 255, 0.2); /* Color de fondo al pasar el mouse */
+    transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
+}
+
+
+#logo {
+    font-weight: bold;
+}
+
+
+#logo a {
+    color: #fff;
+    font-size: 1em;
+}
+
+#logo a i {
+    font-size: 2.5em;
+    /* Aumenta el tamaño del icono */
+}
+#logo a, #user-info a {
+    text-decoration: none;
+}
+.icon-circle {
+    display: inline-flex; /* Usar flexbox para centrar el icono */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    width: 45px; /* Ancho del círculo */
+    height: 45px; /* Alto del círculo */
+    border-radius: 50%; /* Hacerlo redondo */
+    margin-right: 10px; /* Espacio entre el círculo y el texto */
+    color: white; /* Color del icono */
+    font-size: 1.5rem; /* Tamaño del icono */
+    position: relative; /* Asegúrate de que el contenedor sea relativo */
+}
+.icon-circle i {
+    font-size: 1.5rem; /* Ajusta el tamaño del icono aquí */
+    margin: 0; /* Asegúrate de que no haya margen */
+    position: absolute; /* Posiciona el icono de forma absoluta */
+}
+
+.icon-panel {
+    background-color: #2A5EE8; /* Color de fondo para el icono de Panel */
+}
+
+.icon-repair {
+    background-color: #28A745; /* Color de fondo para el icono de Reparaciones */
+}
+
+.icon-client {
+    background-color: #FFC107; /* Color de fondo para el icono de Clientes */
+}
+
+.icon-service {
+    background-color: #17A2B8; /* Color de fondo para el icono de Servicios */
+}
+
+.icon-user {
+    background-color: #6F42C1; /* Color de fondo para el icono de Usuarios */
+}
+
+.icon-empty {
+    background-color: #DC3545; /* Color de fondo para el icono de Vacío */
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+    /*align-items: center; /* Centrar verticalmente */
+    margin-top: 10px; /* Ajusta este valor para mover los botones hacia abajo */
+}
+
+.nav-links li > a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-links a {
+    color: #fff; /* Color de los enlaces en el menú */
+}
+.nav-links a:hover {
+    color: black;
+}
+.desktop-nav {
+    display: flex; /* Mostrar la navegación en pantallas grandes */
+}
+
+
+.menu-toggle {
+    display: none;
+}
+.menu-toggle {
+    position: absolute; /* Posiciona el checkbox fuera del flujo del documento */
+    opacity: 0; /* Hace que el checkbox sea invisible */
+    /*width: 100%; /* Asegúrate de que ocupe el mismo ancho que el contenedor */
+    /*height: 100%; /* Asegúrate de que ocupe el mismo alto que el contenedor */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el área del menú */
+}
+
+.menu-toggle-icon {
+    cursor: pointer;
+    color: white;
+    display: none;
+    font-size: 24px;
+    background-color: #2A5EE8;
+    padding: 10px; 
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s; /* Transición suave */
+}
+
+.mobile-nav {
+    display: none;
+    flex-direction: column;
+    background-color: #62828f;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 60px;
+    text-align: center;
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Sombra para el menú */
+}
+
+.mobile-nav li {
+    padding: 10px;
+    margin-top: 10px; /* Agregar margen superior para separar los elementos */
+}
+.mobile-nav li a {
+    color: white; /* Color del texto en el menú */
+    text-decoration: none; /* Sin subrayado */
+    transition: color 0.3s; /* Transición suave para el color */
+}
+/* Agregar margen superior a los enlaces de administrador y cerrar sesión */
+.mobile-nav li:first-child {
+    margin-top: 20px; /* Ajusta este valor según sea necesario */
+}
+
+.mobile-nav li:last-child {
+    margin-bottom: 20px; /* Ajusta este valor según sea necesario */
+}
+
+.mobile-nav li a:hover {
+    color: #f0f0f0; /* Color al pasar el mouse */
+}
+
+.menu-toggle:checked ~ .mobile-nav {
+    display: flex;
+}
+
+/* Diseño Responsive
+Menu Hamburguesa */
+
+@media (max-width: 1000px) {
+    .desktop-nav {
+        display: none;
+    }
+
+    .menu-toggle-icon {
+        display: block;
+    }
+}
+/* Estilos para pantallas pequeñas */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Ocultar los enlaces de navegación en pantallas pequeñas */
+    }
+    .user-info {
+        display: none; /* Ocultar el área de información del usuario en pantallas pequeñas */
+    }
+    .menu-toggle-icon {
+        display: block; /* Mostrar el icono del menú en pantallas pequeñas */
+    }
+
+   /* .menu-toggle:checked ~ .nav-links {
+        display: flex; /* Mostrar los enlaces de navegación cuando el menú está activado */
+    /*    flex-direction: column; /* Alinear los enlaces en columna */
+    /*    background-color: #62828f; /* Color de fondo del menú */
+      /*  position: absolute; /* Posicionar el menú de forma absoluta */
+     /*   top: 60px; /* Ajustar según la altura del header */
+     /*   left: 0;
+     /*   width: 100%; /* Ancho completo */
+    /*    z-index: 999; /* Asegurarse de que esté por encima de otros elementos */
+   /* }*/
+    .menu-toggle:checked ~ .nav-links {
+        display: flex; /* Mostrar el menú cuando el menú está activado */
+        flex-direction:column; /* Alinear los enlaces en columna */
+        background-color: #62828f; /* Color de fondo del menú */
+        position:absolute; /* Posicionar el menú de forma absoluta */
+        top: 50px; /* Ajustar según la altura del header */
+        left: 0;
+        width: 100%; /* Ancho completo */
+        z-index: 999; /* Asegurarse de que esté por encima de otros elementos */
+    }
+}
+
+/* Css para el rol ususario  */
+.user-info {
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+#user-name {
+    margin-right: 15px;
+    
+}
+.admin-link {
+    
+    color: white; /* Color del texto */
+    margin-right: 15px; /* Espacio a la derecha */
+    text-decoration: none; /* Sin subrayado */
+    transition: color 0.3s; /* Transición suave para el color */
+    background-color:#2A5EE8;
+    border-radius: 10px;
+    padding: 10px 15px; /* Espaciado interno: 10px arriba y abajo, 15px a los lados */
+}
+
+.admin-link:hover {
+    color: #0099ff; /* Cambia el color al pasar el mouse */
+    
+}
+
+
+/* Css para el rol ususario  */
+/* -----------------Estilos agregados para el panel lateral*/
+/* Ejemplo usando clases de Bootstrap */
+
+/* --------------Estilo sidebar fijo */
+.contenido {
+    width: 70%;
+    height: 1000vh;
+    background-color: #999;
+    /* Esto equilibria lo del aside*/
+    position: relative;
+    top: 0;
+    left: 30%;
+    padding: 20px; /* Espaciado alrededor del contenido */
+}
+.row {
+    display: flex; /* Usar flexbox para alinear las tarjetas */
+    flex-wrap: wrap; /* Permitir que las tarjetas se envuelvan en varias filas */
+}
+.col-md-3 {
+    display: flex; /* Usar flexbox para alinear el contenido dentro de la columna */
+    flex-direction: column; /* Alinear el contenido en columna */
+    justify-content: stretch; /* Espacio entre los elementos dentro de la tarjeta */
+    height: 100%; /* Asegúrate de que las columnas ocupen toda la altura disponible */
+}
+.card {
+    border-radius: 10px; /* Bordes redondeados para las tarjetas */
+    transition: transform 0.3s; /* Transición suave al pasar el mouse */
+    flex: 1; /* Permitir que las tarjetas crezcan para ocupar el mismo espacio */
+    display: flex; /* Usar flexbox para alinear el contenido dentro de la tarjeta */
+    flex-direction: column; /* Alinear el contenido en columna */
+    height: 100%; /* Asegúrate de que todas las tarjetas tengan la misma altura */
+    min-height: 150px; /* Ajusta este valor según sea necesario */
+}
+.card-body {
+    display: flex; /* Usar flexbox para alinear el contenido */
+    flex-direction: column; /* Alinear el contenido en columna */
+    justify-content: space-between; /* Espacio entre el título y el texto */
+    height: 100%; /* Asegúrate de que el cuerpo de la tarjeta ocupe toda la altura */
+    flex: 1; /* Permitir que el cuerpo de la tarjeta crezca para ocupar el mismo espacio */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
+}
+
+.card-title {
+    font-size: 1.25rem; /* Tamaño de fuente más grande para el título */
+}
+
+.card-text {
+    font-size: 1.5rem; /* Tamaño de fuente más grande para el texto */
+}
+aside {
+    width: 30%;
+    height: 100vh;
+    /*background-color: #333; */
+    background: linear-gradient(135deg, #333 0%, #1E3A8A 100%); /* Degradado moderno */
+    /*background-color: #2A5EE8; /* Color de fondo moderno */
+    /* Esto lo mantendra en su sitio*/
+    position: fixed; /* Mantener el aside fijo */
+    /* top: 0;
+    left: 0; */
+    color: white; /* Color del texto */
+    padding: 20px; /* Espaciado interno */
+    overflow-y: auto; /* Permitir desplazamiento si el contenido es largo */
+    /*box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+}
+.sidebar-header {
+    margin-bottom: 20px; /* Espacio debajo del encabezado */
+}
+.sidebar-header h2 {
+    font-size: 1.75rem; /* Tamaño de fuente para el título */
+    margin: 0; /* Sin margen */
+}
+.sidebar-header p {
+    font-size: 1.3rem; /* Tamaño de fuente para el saludo */
+    margin: 0; /* Sin margen */
+}
+
+
+.btn-cac{
+    /*background-color: var(--primary-color); */
+    background-color: #2A5EE8;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    transition: background-color 0.3s;
+    text-decoration: none; /* Asegúrate de que no haya subrayado */
+}
+.btn-cac:hover, button:hover {
+    background-color: #1E3A8A;
+    color: white;
+}
+#logout-button {
+
+    /*background-color: transparent; */
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+/*Formulario editar nueva reparacion */
+.form-reparacion {
+    background-color: #ffffff; /* Fondo blanco para el formulario */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 15px; /* Espaciado interno */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    margin: 20px auto; /* Margen superior e inferior */
+    max-width: 600px;
+    width: 90%; /* Ancho del formulario en pantallas pequeñas */
+}
+
+.form-group {
+    margin-bottom: 10px; /* Espacio entre los campos */
+}
+
+.form-control {
+    width: 100%; /* Asegúrate de que los inputs ocupen el 100% del contenedor */
+    padding: 8px; /* Espaciado interno */
+    border: 1px solid #ccc; /* Borde gris */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: border-color 0.3s; /* Transición suave para el borde */
+}
+
+.form-control:focus {
+    border-color: #0099ff; /* Color del borde al enfocar */
+}
+
+.btn-primary {
+    background-color: #2A5EE8; /* Color de fondo del botón */
+    border: none; /* Sin borde */
+    padding: 10px 15px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s; /* Transición suave para el fondo */
+}
+
+.btn-primary:hover {
+    background-color: #1E3A8A; /* Color de fondo al pasar el mouse */
+}
+/* Estilo para los labels */
+.form-reparacion label {
+    color: #333; /* Color más oscuro para los labels */
+    font-weight: bold; /* Hacer el texto más grueso si lo deseas */
+}
+/* Media Queries para adaptarse a la resolución 1366 x 768 */
+@media (max-width: 1366px) {
+    .contenido {
+        width: 70%; /* Mantener el ancho del contenido */
+    }
+
+    .form-reparacion {
+        padding: 15px; /* Ajustar el espaciado interno */
+        max-width: 90%; /* Ancho máximo del formulario en pantallas pequeñas */
+    }
+
+    .form-group {
+        margin-bottom: 10px; /* Reducir el espacio entre los campos */
+    }
+
+    .btn-primary {
+        width: 100%; /* Hacer que el botón ocupe todo el ancho */
+    }
+}
+
+/* .table{
+    width: 80%;
+} */

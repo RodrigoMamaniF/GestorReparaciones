@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../static/img/ryr.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../static/css/contact.css">
+    <script src="https://kit.fontawesome.com/36ffac426e.js" crossorigin="anonymous"></script>
+
+    <title>R y R</title>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Bienvenido a RyR Reparaciones</h1>
+            <p>Tu solución confiable para todas tus necesidades de reparación.</p>
+        <!--<a href="#contact" class="btn-hero">Contáctanos</a> -->
+        </div>
+    </section>
+    <!-- Hero Section -->
+
+    <header class="header">
+        <nav>
+            <div id="logo">
+                <a href="/"><i class="fa-solid fa-laptop-code "></i></a>
+                <a class="logo-text" href="/">RyR Reparaciones</a></div>
+
+            
+            <!-- Navegador en escritorio-->
+            <ul class="nav-links desktop-nav">
+                <li><a href="/register">Registrate</a></li>
+                <!--<li><a href="#popular">Reparaciones favoritas</a></li> -->
+                <li><a href="/contact">Contáctanos</a></li>
+                <li><a href="/auth" class="btn-cac">
+                    <i class="fas fa-sign-in-alt"></i><span class="login-text"> Iniciar Sesión</span></a></li>
+                </ul>
+                
+                <!-- Menu Hamburguesa-->
+                <input type="checkbox" id="menu-toggle" class="menu-toggle">
+                <label for="menu-toggle" class="menu-toggle-icon">
+                    <i class="fas fa-bars"></i>
+                </label>
+                
+            <!-- Navegador en móvil-->
+            <ul class="nav-links mobile-nav">
+                <li><a href="/register">Registrate</a></li>
+                <!--<li><a href="#popular">Reparaciones favoritas</a></li> -->
+                <li><a href="/contact">Contáctanos</a></li>
+                <li><a href="/auth" class="btn-cac">Iniciar Sesión</a></li>
+            </ul>
+        
+
+        </nav>
+    </header>
+
+
+    <!-- AGREGADP Contactanos-->
+    <section id="contact" class="container">
+        <h2>Contáctanos</h2>
+        <form id="contactForm">
+            <div class="form-group">
+            <input type="text" id="name" placeholder=" " required>
+            <label for="name">Tu Nombre</label>
+            </div>
+            <div class="form-group">
+            <input type="email" id="email" placeholder=" " required>
+            <label for="email">Tu Correo</label>
+            </div>
+            <div class="form-group">
+            <textarea id="message" placeholder=" " required></textarea>
+            <label for="message">Tu Mensaje</label>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+    <!-- AGREGADP Contactanos-->
+
+    <!-- AGREGADP Redes Socialessss-->
+    <section id="social-media" class="container">
+        <h2>Síguenos en Redes Sociales</h2>
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+    </section>
+    <!-- AGREGADP Redes Socialessss-->
+
+    <!-- AGREGADP Equipo-->
+    <section id="team" class="container">
+        <h2>Conoce a Nuestro Equipo</h2>
+        <p>Estamos orgullosos de contar con un equipo de profesionales altamente capacitados y apasionados por la tecnología. Conoce a nuestros expertos:</p>
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="../static/img/Nuestro-Equipo-1.webp" alt="Miembro del equipo 1">
+                <h3>Juan Pérez</h3>
+                <p>Técnico de Hardware</p>
+                <p>Juan tiene más de 5 años de experiencia en reparación de computadoras y es un experto en hardware.</p>
+            </div>
+            <div class="team-member">
+                <img src="../static/img/Nuestro-Equipo-6-ella.webp" alt="Miembro del equipo 2">
+                <h3>María López</h3>
+                <p>Técnica de Software</p>
+                <p>María se especializa en la instalación y configuración de software, asegurando que todo funcione a la perfección.</p>
+            </div>
+            <div class="team-member">
+                <img src="../static/img/Nuestro-Equipo-2.webp" alt="Miembro del equipo 3">
+                <h3>Carlos García</h3>
+                <p>Especialista en Redes</p>
+                <p>Carlos es un experto en redes y seguridad, garantizando que tu conexión sea rápida y segura.</p>
+            </div>
+            <div class="team-member">
+                <img src="../static/img/Nuestro-Equipo-5-ella.webp" alt="Laura Martínez">
+                <h3>Laura Martínez</h3>
+                <p>Especialista en Soporte Técnico</p>
+                <p>Laura es una apasionada del servicio al cliente y tiene más de 4 años de experiencia en soporte técnico. Su objetivo es garantizar que cada cliente reciba la ayuda que necesita de manera rápida y eficiente.</p>
+            </div>
+        </div>
+    </section>
+    <!-- AGREGADP Equipo-->
+
+    <section id="contact-info" class="container">
+        <h2>Información de Contacto</h2>
+        <p><i class="fas fa-phone"></i> Teléfono: (123) 456-7890</p>
+        <p><i class="fas fa-envelope"></i> Email: contacto@ryrreparaciones.com</p>
+    </section>
+
+    <footer>
+        
+        <div class="footer-content">
+        <a href="">Terminos y condiciones</a>
+        <a href="">Preguntas frecuentes</a>
+        <a href="">Ayuda</a>
+        <a href=""><i class="fas fa-question-circle"></i></a>
+        <div class="social-icons">
+        <a href="http://facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+        <a href="http://twitter.com" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="http://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        <a href="http://linkedin.com" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+        <p>2025 R y R. Todos los derechos reservados </p>
+        </div>
+    </footer>
+
+    <script src="../static/js/contact.js"></script>
+
+</body>
+</html>

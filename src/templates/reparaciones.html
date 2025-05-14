@@ -1,0 +1,114 @@
+{% extends "panel.html" %}
+{%block title%} Reparaciones {% endblock %}
+{% block cssDedicado %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/panel.css') }}">
+<link rel="shortcut icon" href="../static/img/ryr.ico" type="image/x-icon">
+<!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/reparaciones.css') }}">  -->
+{%endblock%}
+
+{% block contenidoMain %}
+<div class="contenido">
+    
+
+    {% if not modo_editar %}
+    <form method="post">
+    </form>
+    {% endif %}
+    <h2>Reparaciones</h2>
+    <a href="/crear_reparacion" class="btn btn-success mb-3">Agregar reparación</a>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Fecha</th>
+                <th>Descripción</th>
+                <th>Costo</th>
+                <th>Estado</th>
+                <th>Creado por</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reparacion in reparaciones %}
+            <tr>
+                <td>{{clientes_dict[reparacion[6]]}}</td>
+                <td>{{ reparacion[1] }}</td>
+                <td>{{ reparacion[2] }}</td>
+                <td>{{ reparacion[3] }}</td>
+                <td>{{ reparacion[5] }}</td>
+                <td>{{usuarios_dict[reparacion[7]]}}</td>
+                <td>
+                    <a href="/actualizar/{{ reparacion[0] }}" class="btn btn-warning">Editar</a> |
+                    <a class="btn btn-danger" onclick="return confirm('¿Desea borrar la reparación?')"
+                        href="/borrar/{{ reparacion[0] }}">Borrar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if modo_editar %}
+    
+    {% for reparacion in reparaciones %}
+    <h3>Editar Reparación</h3>
+    <form method="post" action="/actualizar/{{ reparacion[0] }}" class="form-reparacion">
+        <input type="hidden" type="int" name="txtIDrep" id="txtIDrep" value="{{ reparacion[0] }}" readonly /> <br />
+        
+        <div class="form-group">
+            <label for="txtUsuario">Usuario:</label>
+        <select name="txtUsuario" id="txtUsuario" class="form-control">
+            {% for usuario in usuarios %}
+            <option value="{{ usuario[0] }}" {% if usuario[0]==reparacion[7] %} selected {% endif %}>
+                {{ usuarios_dict[usuario[0]] }} </option>
+            {% endfor %}
+        </select><br>
+        </div>
+
+        <div class="form-group">
+            <label for="txtCliente">Cliente:</label>
+        <select name="txtCliente" id="txtCliente" class="form-control">
+            {% for cliente in clientes %}
+            <option value="{{ cliente[0] }}" {% if cliente[0]==reparacion[6] %} selected {% endif %}>
+                {{ clientes_dict[cliente[0]] }} </option>
+            {% endfor %}
+        </select><br>
+        </div>
+
+        <div class="form-group">
+            <label for="txtFecha">Fecha:</label>
+        <input type="date" name="txtFecha" id="txtFecha" value="{{ reparacion[1] }}" class="form-control"/> <br />
+        </div>
+
+        <div class="form-group">
+            <label for="txtDescripcion">Descripción:</label>
+        <textarea name="txtDescripcion" id="txtDescripcion" class="form-control">{{ reparacion[2] }}</textarea><br>
+        </div>
+
+        <div class="form-group">
+            <label for="txtCosto">Costo:</label>
+        <input type="number" name="txtCosto" id="txtCosto" value="{{ reparacion[3] }}" class="form-control"/> <br />
+        </div>
+
+        <div class="form-group">
+            <label for="txtExiste">Existe:</label>
+        <input type="boolean" name="txtExiste" id="txtExiste" value="{{ reparacion[4] }}" /> <br />
+        <!-- <input type="checkbox" name="txtExiste" id="txtExiste" value="1" {% if reparacion[4] %} checked {% endif %} /> -->
+        </div>
+        
+        <div class="form-group">
+            <label for="txtEstado">Estado:</label>
+        <input type="text" name="txtEstado" id="txtEstado" value="{{ reparacion[5] }}" class="form-control"/> <br />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        <!-- <input type="submit" value="Guardar Cambios" /> -->
+    </form>
+    
+    {% endfor %}
+    {% endif %}
+
+
+</div>
+{% endblock %}

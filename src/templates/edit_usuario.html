@@ -1,0 +1,31 @@
+{% extends "panel.html" %}
+{%block title%} Usuario-Edit {% endblock %}
+{% block cssDedicado %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/panel.css') }}">
+<link rel="shortcut icon" href="../static/img/ryr.ico" type="image/x-icon">
+<!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/reparaciones.css') }}">  -->
+{%endblock%}
+
+{% block contenidoMain %}
+<div class="contenido">
+<h3>Editar Usuario</h3>
+
+<form method="post" action="/edit_usuario/{{ usuario[0] }}" class="form-reparacion">
+
+    <input type="hidden" type="int" name="txtUser" id="txtUser" value="{{ usuario[0] }}" readonly /> <br />
+
+    <div class="form-group">
+        <label for="txtNombre">Nombre:</label>
+        <input type="text" name="txtNombre" id="txtNombre" value="{{ usuario[1] }}" class="form-control" /> <br />
+    </div>
+
+    <div class="form-group">
+        <label for="txtEmail">Email:</label>
+        <input type="email" name="txtEmail" id="txtEmail" value="{{ usuario[2] }}" class="form-control" /> <br />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+</form>
+</div>
+
+{%endblock%}

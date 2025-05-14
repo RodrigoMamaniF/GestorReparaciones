@@ -1,0 +1,111 @@
+{% extends './layout.html' %}
+
+{% block title %} Login {% endblock %}
+
+{% block cssDedicado %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login2.css') }}">
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+<link rel="shortcut icon" href="../static/img/ryr.ico" type="image/x-icon">
+{% endblock %}
+{% block link %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+    href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
+    rel="stylesheet">
+{% endblock %}
+
+{% block scripts %}
+<script src="https://kit.fontawesome.com/36ffac426e.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+
+{% block body %}
+
+<body class="body-register">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Bienvenido a RyR Reparaciones</h1>
+            <p>Tu solución confiable para todas tus necesidades de reparación.</p>
+        </div>
+    </section>
+    <!-- Hero Section -->
+
+    <header class="header">
+        <nav>
+            <div id="logo">
+                <a href="{{ url_for('indice') }}"><i class="fa-solid fa-laptop-code"></i></a>
+                <a class="logo-text" href="{{ url_for('indice') }}">RyR Reparaciones</a>
+            </div>
+
+            <ul class="nav-links desktop-nav">
+                <li><a href="{{ url_for('register') }}">Registrate</a></li>
+                <li><a href="{{ url_for('contact') }}">Contáctanos</a></li>
+                <!--Botón Iniciar sesion ELIMINADO. -->
+            </ul>
+
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            <label for="menu-toggle" class="menu-toggle-icon">
+                <i class="fas fa-bars"></i>
+            </label>
+
+            <ul class="nav-links mobile-nav">
+                <li><a href="{{ url_for('register') }}">Registrate</a></li>
+                <li><a href="{{ url_for('contact') }}">Contáctanos</a></li>
+                <li><a href="./login.html" class="btn-cac"><span class="login-text">Iniciar Sesión</span></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" class="main">
+        <section class="form-wrapper">
+            <div class="banner-card2">
+                <img src="../static/img/logo_RyR.png" alt="Logo de RyR Reparaciones" class="logo">
+                <h2>Iniciar Sesión</h2>
+
+                <form id="formRegister" method="POST" novalidate action="/login">
+                    <div class="form-control">
+                        <input type="text" placeholder=" " name="username" id="username" required>
+                        <label for="username">Usuario</label>
+                    </div>
+
+                    <div class="form-control">
+                        <input type="password" placeholder=" " name="password" id="password" required>
+                        <label for="password">Contraseña</label>
+                    </div>
+
+                    <button type="submit">Ingresar</button>
+                </form>
+                {% if message %}
+            <!--<small class="text-danger">{{ message }}</small> -->
+                <div class="alert alert-success" role="alert">{{ message }}</div>
+                {% endif %}
+            </div>
+        </section>
+
+
+        <footer>
+            <a href="">Términos y condiciones</a>
+            <a href="">Preguntas frecuentes</a>
+            <a href="">Ayuda</a>
+            <a href=""><i class="fas fa-question-circle"></i></a>
+            <div class="social-icons">
+                <a href="http://facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                <a href="http://twitter.com" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="http://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="http://linkedin.com" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+            <p>2025 R y R. Todos los derechos reservados </p>
+        </footer>
+
+        <script src="../static/js/index.js"></script>
+    </main>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+{% endblock %}

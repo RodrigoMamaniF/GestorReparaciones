@@ -1,0 +1,45 @@
+{% extends "panel.html" %}
+{%block title%} Canceladas {% endblock %}
+{% block cssDedicado %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/panel.css') }}">
+<link rel="shortcut icon" href="../static/img/ryr.ico" type="image/x-icon">
+{%endblock%}
+
+{% block contenidoMain %}
+
+<div class="contenido">
+    <div id="lista-canceladas"> <!--CAMBIAR!!! Es necesario este id?-->
+        <h2>Lista de reparaciones canceladas</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Cliente</th>
+                    <th>Fecha</th>
+                    <th>Descripción</th>
+                    <th>Costo</th>
+                    <th>Estado</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reparacion in reparaciones_canceladas %}
+    
+                <tr>
+                    <td>{{clientes_dict[reparacion[6]]}}</td>
+                    <td>{{ reparacion[1] }}</td>
+                    <td>{{ reparacion[2] }}</td>
+                    <td>{{ reparacion[3] }}</td>
+                    <td>{{ reparacion[5] }}</td>
+                    <td>
+                        <a href="/actualizar/{{ reparacion[0] }}" class="btn btn-warning">Editar</a> |
+                        <a class="btn btn-danger" onclick="return confirm('¿Desea borrar la reparación?')"
+                            href="/borrar/{{ reparacion[0] }}">Borrar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

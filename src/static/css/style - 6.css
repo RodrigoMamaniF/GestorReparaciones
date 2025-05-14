@@ -1,0 +1,699 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+/*Pseudoclase de css para la etiqueta HTML*/
+
+:root{
+    /*--bg-color: rgb(27, 25, 25);*/
+    --bg-color: rgb(27, 25, 25);
+    --primary-color: #b1dd00;
+    --seconday-color: #143954;
+    --third-color: #62828f;
+    --bg-input-color: rgba(255,255,255,0.1);
+}
+
+body{
+    background-color: var(--bg-color);
+    font-family: 'Nunito', sans-serif;
+}
+
+h2{
+    color: #fff;
+    font-size: 2vw;
+}
+.title-como-trabajamos {
+    font-family: 'Nunito', sans-serif;
+    font-size: 30px;
+    color: #fff;;
+    text-align: center;
+    letter-spacing: 15px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    /*background: linear-gradient(to right, #f0f4f8, #d9e2ec); */
+    padding: 10px;
+    border-radius: 10px;
+}
+
+a{
+    text-decoration: none;
+}
+
+.header{
+    width: 100%;
+    background-color: #62828f;
+    position: sticky;
+    top: 0;
+   /* left: 0; */
+    z-index: 9999;
+    /*pointer-events: none; /* Desactiva eventos en el header */
+}
+.hamburger-button {
+    pointer-events: auto; /* Activa eventos solo en el botón */
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px; /* Cambia a un padding más pequeño */
+    height: 60px;
+}
+
+
+#logo{
+    font-weight: bold;
+}
+
+
+#logo a{
+    color: #fff;
+    font-size: 1em;
+}
+#logo a i {
+    font-size: 2.5em; /* Aumenta el tamaño del icono */
+}
+
+
+
+
+
+
+.nav-links{
+    display: flex;
+    list-style: none;
+    gap: 15px; /* Reduce el espacio entre los elementos */
+}
+
+.nav-links li > a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-links a:hover{
+    color: black;
+}
+
+
+.menu-toggle{
+    display: none;
+}
+/* Para ocultar el checkbox pero mantener su funcionalidad */
+.menu-toggle {
+    position: absolute; /* Posiciona el checkbox fuera del flujo del documento */
+    opacity: 0; /* Hace que el checkbox sea invisible */
+    /*width: 100%; /* Asegúrate de que ocupe el mismo ancho que el contenedor */
+    /*height: 100%; /* Asegúrate de que ocupe el mismo alto que el contenedor */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el área del menú */
+}
+
+
+.menu-toggle-icon{
+    cursor: pointer;
+    color: white;
+    display: none;
+    font-size: 20px;
+    background-color: #2A5EE8;
+    padding: 10px; 
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s; /* Transición suave */
+}
+.menu-toggle-icon:hover {
+    background-color: #1E3A8A; /* Color al pasar el mouse */
+}
+
+.mobile-nav{
+    display: none;
+    flex-direction: column;
+    background-color: #62828f;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 60px;
+    text-align: center;
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Sombra para el menú */
+}
+
+.mobile-nav li{
+    padding: 10px;
+}
+.mobile-nav li a {
+    color: white; /* Color del texto en el menú */
+    text-decoration: none; /* Sin subrayado */
+    transition: color 0.3s; /* Transición suave para el color */
+}
+.mobile-nav li a:hover {
+    color: #f0f0f0; /* Color al pasar el mouse */
+}
+
+.menu-toggle:checked ~ .mobile-nav{
+    display: flex;
+}
+
+
+
+
+
+#banner{
+    position: relative;
+    background-image: url('../img/banner-4.webp');
+    background-size: cover;
+    background-position: center;
+    height: 93.8vh;
+    box-shadow: inset 0 0 0 2000px rgba(84,84,84,0.5);
+    /* Ajusta el valor según sea necesario (0.7 es más oscuro) */
+    /*filter: brightness(0.7); */
+
+}
+#banner::before {
+    content: ""; /* Necesario para crear el pseudo-elemento */
+    position: absolute; /* Posiciona el pseudo-elemento */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3); /* Color negro con opacidad (ajusta el valor de opacidad según sea necesario) */
+    z-index: 1; /* Asegúrate de que esté detrás del texto */
+}
+#banner h1, #banner h2 {
+    position: relative; /* Asegúrate de que el texto esté por encima del pseudo-elemento */
+    z-index: 2; /* Asegúrate de que el texto esté por encima de la superposición */
+    color: white; /* Asegúrate de que el texto sea visible */
+}
+
+.d-flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/*VER SI SACAR O NO ESTE ESTILO*/
+
+/*section{  
+    background-color: orange;
+}  */
+
+
+/*VER SI SACAR ESTO O NO*/
+/* .banner-css{
+    background-color: var(--bg-color);
+}  */
+
+
+.banner-card{
+    text-align: center;
+    padding: 0px 160px;
+    animation: appear 5s ease forwards;
+    opacity: 0;
+    position: relative;
+    z-index: 2;
+}
+.bright-text {
+    color: #ffffff; /* Cambia a blanco para mayor contraste */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Sombra oscura para resaltar */
+}
+
+@keyframes appear{
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+
+.banner-card h1{
+    color: #fff;
+    font-size: 4vw;
+}
+
+.banner-card h2{
+    margin-bottom: 20px;
+}
+
+#search{
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-title{
+    color: white;
+    font-size: 3vw;
+}
+
+.input-search{
+    background-color: rgba(255,255,255,0.1);
+    border: 2px solid white;
+    border-radius: 25px;
+    color: white;
+    font-size: 16px;
+    height: 50px;
+    margin: 20px 0px;
+    outline: none;
+    padding: 0px 20px;
+    width: 70%;
+    font-family: 'Nunito', sans-serif;
+}
+
+#popular h2, #top-rated, #search{
+    text-align: center;
+}
+
+#popular h2, #top-rated h2h{
+    margin: 30px 0px;
+}
+
+.btn-cac{
+    /*background-color: var(--primary-color); */
+    background-color: #2A5EE8;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    transition: background-color 0.3s;
+    text-decoration: none; /* Asegúrate de que no haya subrayado */
+}
+.btn-cac:hover, button:hover {
+    background-color: #1E3A8A;
+    color: white;
+}
+
+
+
+
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative; /* Asegúrate de que el contenedor tenga un contexto de posición */
+    overflow: hidden; 
+}
+
+.pc-grid{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-row: repeat(2,1fr);
+    justify-items: center;
+    row-gap: 20px;
+}
+
+.pc-item{
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    width: 200px;
+    height: 300px;
+    display: inline-block;
+    cursor: pointer;
+    transition: all 500ms;
+
+    transition: transform 0.4s ease-in-out;
+    transform-origin: center center;
+}
+
+.pc-item:hover{
+    transform: scale(1.1);
+}
+
+.pc-item-img{
+    width: 200px;
+    height: 300px;
+}
+
+.pc-scroller{
+        display: flex;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        width: 100%;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 0px 0px 40px 0px;
+}
+
+@keyframes moveRight {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(20px); /* Mueve 10px a la derecha */
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+#top-rated-list {
+    display: flex; /* Usar flexbox para alinear los elementos en fila */
+    overflow:visible; /* Ocultar el desbordamiento */
+    width: 100%; /* Asegúrate de que el contenedor tenga un ancho definido */
+}
+
+
+
+.pc-item-v2{
+    border-radius: 10px;
+    width: 170px;
+    min-width: 200px;
+    font-size: 20px;
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 30px;
+    margin-right: 20px;
+    justify-content: space-between;
+    flex-direction: column;
+    transition: transform 0.5s ease;
+    transform-origin: center left;
+    animation: moveRight 2s ease-in-out infinite;
+    /*overflow: hidden;*/
+    background-color: #333333; /* Color de fondo */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.pc-item-img-v2{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+    border-radius: 10px;
+    width: 100%;
+    min-height: calc(150px*1.2);
+    /*height: calc(150px*1.5); */
+    height: auto;
+    overflow: hidden;
+    border: 1.5px solid rgba(255, 255, 255, 0.8); /* Agrega un borde blanco */
+    box-sizing: border-box; /* Incluye el borde en el tamaño total */
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Transición suave */
+}
+
+.wrapper:hover {
+    box-shadow: 0 4px 16px rgba(250, 250, 250, .5); /* Sombra más intensa al pasar el mouse */
+    transform: scale(1.0.1); /* Mueve el contenedor hacia arriba */
+}
+
+.pc-item-detail-v2{
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.pc-item-detail-title-v2{
+    color: white;
+    font-weight: bold;
+    margin: 5px 0px 0px 0px;
+}
+
+.pc-item-detail-subtitle-v2{
+    color: white;
+    font-size: 12px;
+    margin: 5px 0px;
+}
+
+
+/*CSS para el Footer*/
+footer {
+    background-color: #62828f; /* Color de fondo del footer */
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 24px;
+    color: white;
+
+
+
+    margin-top: auto; /* Asegúrate de que el footer esté al final */
+    
+}
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer a:hover {
+    color: rgb(171, 171, 184);
+}
+
+footer .social-icons {
+    margin: 20px 0;
+    display: flex; /* Usar flexbox para centrar los íconos */
+    justify-content: center; /* Centra los íconos horizontalmente */
+}
+footer .social-icons a {
+    color: white; /* Color de los íconos */
+    font-size: 24px; /* Tamaño de los íconos */
+    margin: 0 10px; /* Espaciado entre íconos */
+    transition: transform 0.3s; /* Agrega transición */
+}
+footer .social-icons a:hover {
+    transform: scale(1.1); /* Aumenta el tamaño al pasar el mouse */
+}
+
+.social-icons{
+    margin: 20px 0;
+}
+
+/*AGREGADO NOCHE */
+@media (max-width: 1366px) {
+    .form-wrapper {
+        width: 90%; /* Cambia el ancho a un porcentaje */
+        padding: 20px; /* Reduce el padding */
+    }
+    .logo {
+        max-width: 70%; /* Asegúrate de que la imagen no exceda el ancho del contenedor */
+    }
+    .nav-links {
+        flex-direction:row; /* Cambia a fila en pantallas más pequeñas */
+        align-items: center; /* Centra los elementos */
+    }
+    .btn-hero {
+        position: relative; /* Cambia a posición relativa */
+        left: 0; /* Elimina el desplazamiento */
+    }
+    .hero-content h1 {
+        font-size: 2em; /* Ajusta el tamaño de la fuente */
+    }
+    .hero-content p {
+        font-size: 1em; /* Ajusta el tamaño de la fuente */
+    }
+}
+/*AGREGADO NOCHE */
+/* Media Queries */
+@media (max-width: 1000px) {
+    #user-info {
+        display: none; /* Oculta el área de usuario en pantallas pequeñas */
+    }
+    
+    .menu-toggle {
+        display: block; /* Muestra el checkbox en pantallas pequeñas */
+    }
+    
+    .menu-toggle-icon {
+        display: block; /* Muestra el icono del menú */
+    }
+    
+    .desktop-nav {
+        display: none; /* Oculta la navegación de escritorio */
+    }
+    .mobile-nav {
+        
+        display: none; /* Oculta la navegación móvil por defecto */
+    }
+
+    .menu-toggle:checked ~ .mobile-nav {
+        display: flex; /* Muestra la navegación móvil cuando el checkbox está marcado */
+    }
+}
+/* Media Queries para mejorar la responsividad */
+@media (max-width: 760px) {
+    .work-steps {
+        flex-direction: column; /* Cambia a columna en pantallas pequeñas */
+    }
+
+    .work-image {
+        margin-right: 0; /* Elimina el margen derecho en pantallas pequeñas */
+        margin-bottom: 20px; /* Agrega margen inferior */
+        margin: 10px;
+    }
+    .bright-text{
+        font-size: 20px;
+        text-align: center;
+    }
+}
+
+/* Diseño Responsive
+Menu Hamburguesa */
+
+
+/* Imágenes responsivas */
+
+
+#scrollToTopButton{
+    
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    cursor: pointer;
+    background-color: #0099ff;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    text-align: center;
+    line-height: 40px;
+}
+
+
+
+/*<!-- AGREGADP--> */
+
+.pc-item-img, .pc-item-img-v2 {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+/*<!-- AGREGADP--> */
+
+
+/*<!-- AGREGADP Video--> */
+.video-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.video-container iframe {
+    width: 100%;
+    max-width: 600px;
+    height: 315px;
+}
+/*<!-- AGREGADP Video--> */
+
+
+/* Css para el rol ususario  */
+.user-info {
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+#user-name {
+    margin-right: 15px;
+}
+
+#logout-button {
+
+    /*background-color: transparent; */
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.admin-link {
+    color: white; /* Color del texto */
+    margin-right: 15px; /* Espacio a la derecha */
+    text-decoration: none; /* Sin subrayado */
+    transition: color 0.3s; /* Transición suave para el color */
+}
+
+.admin-link:hover {
+    color: #0099ff; /* Cambia el color al pasar el mouse */
+    
+}
+/* Css para el rol ususario  */
+
+/* ¿Cómo trabajamos?  */
+#how-we-work {
+    padding: 40px 20px; /* Espaciado alrededor de la sección */
+    background-color: #333; /* Color de fondo para distinguir la sección */
+    color: white; /* Color del texto */
+}
+
+.work-steps {
+    display: flex; /* Usar flexbox para alinear horizontalmente */
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+    align-items: flex-start; /* Alinear los elementos al inicio */
+    justify-content: space-between; /* Espacio entre la imagen y los textos */
+}
+
+.work-image {
+    flex: 1; /* La imagen ocupa un espacio proporcional */
+    max-width: 100%; /* Ancho máximo para la imagen */
+    margin-right: 20px; /* Espacio entre la imagen y el texto */
+   /* margin-top: 5px; /* Ajusta este valor para mover la imagen hacia abajo */
+    /*overflow: hidden; /* Asegúrate de que no se desborde */
+    /*border-radius: 10px; /* Bordes redondeados */
+    height: 495px; /* Ajusta la altura del contenedor */
+    overflow: hidden; /* Asegúrate de que no se desborde */
+}
+
+.work-image img {
+    width: 100%; /* Permite que el ancho se ajuste automáticamente */
+    /*height: auto; /* Ajusta la altura según lo necesites */
+
+    height: 495px; /* Ajusta la altura según lo necesites */
+    border-radius: 10px;
+    /*max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
+    /*object-fit: cover; /* Mantiene la proporción de la imagen y la recorta si es necesario */
+    object-fit: cover; 
+}
+
+.work-details {
+    flex: 2; /* Los detalles ocupan más espacio que la imagen */
+}
+
+.work-step {
+    /*position: relative; /* Necesario para el pseudo-elemento */
+    margin-bottom: 20px; /* Espacio entre los pasos */
+    padding: 20px; /* Espacio interno */
+    border-radius: 10px; /* Bordes redondeados */
+    /*overflow: hidden; /* Asegúrate de que el contenido no se desborde */
+    background-color: rgba(255, 255, 255, 0.1); /* Color de fondo */
+    
+}
+
+.work-step h3 {
+    margin-bottom: 10px; /* Espacio debajo del título de cada paso */
+    margin-top: 10px;
+    
+}
+.work-step h3 i {
+    margin-right: 10px; /* Espacio entre el icono y el texto */
+    background-color: #0099ff; /* Cambia el color del icono */
+    font-size: 1.5em; /* Tamaño del icono */
+    border-radius: 50%; 
+    width: 50px;
+    height: 50px;
+    display: inline-flex; /* Alinea el ícono en el centro */
+    justify-content: center; /* Centra el ícono horizontalmente */
+    align-items: center; /* Centra el ícono verticalmente */
+    transition: background-color 0.3s, transform 0.3s; /* Transición suave */
+}
+.work-step h3 i:hover {
+    background-color: #0077cc; /* Cambia el color de fondo al pasar el mouse */
+    transform: scale(1.1); /* Aumenta el tamaño del ícono */
+    transition: background-color 0.3s, transform 0.3s; /* Transición suave */
+}
+
+/* ¿Cómo trabajamos? */

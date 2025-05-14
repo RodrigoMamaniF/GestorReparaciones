@@ -1,0 +1,44 @@
+{% extends "panel.html" %}
+{%block title%} Reparaciones {% endblock %}
+{% block cssDedicado %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/panel.css') }}">
+<link rel="shortcut icon" href="../static/img/ryr.ico" type="image/x-icon">
+{%endblock%}
+
+{% block contenidoMain %}
+
+<div class="contenido">
+    <div id="lista-clientes">
+        <h2>Lista de clientes</h2>
+        <a href="/crear_cliente" class="btn btn-success mb-3">Agregar cliente</a>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Cliente</th>
+                        <th scope="col">email</th>
+                        <th scope="col">telefono</th>
+                        <th scope="col">Creado por:</th>
+                        <th scope="col">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cliente in clientes %}
+                    <tr>
+                        <td>{{ cliente[1]}}</td>
+                        <td>{{ cliente[2]}}</td>
+                        <td>{{ cliente[3]}}</td>
+                        <td>{{ usuarios_dict[cliente[5]] }}</td>
+                        <td>
+                            <a href="/edit_cliente/{{ cliente[0] }}" class="btn btn-warning">Editar</a> |
+                            <a class="btn btn-danger" onclick="return confirm('¿Desea borrar la reparación?')"
+                                href="/borrar/{{ cliente[0] }}">Borrar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
