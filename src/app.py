@@ -48,10 +48,9 @@ def register_user():
         if not email or not re.match(r"[^@]+@[^@]+\.[^@]+", email):
             return render_template('register.html', message='Por favor, ingresa un correo electrónico válido.')
 
-        # Aquí puedes agregar validaciones adicionales si es necesario
         cursor = mysql.connection.cursor()
         
-        # Verificar si el nombre de usuario ya existe
+        # Verifica si el nombre de usuario ya existe
         cursor.execute("SELECT * FROM usuarios WHERE nombre=%s", (username,))
         existing_user = cursor.fetchone()
         
@@ -59,15 +58,14 @@ def register_user():
             # Si el usuario ya existe, muestra un mensaje de error
             return render_template('register.html', message='El nombre de usuario ya está en uso.')
         
-        # Aquí puedes agregar validaciones adicionales si es necesario
         cursor.execute("INSERT INTO usuarios (nombre, email, contrasena) VALUES (%s, %s, %s)", (username, email, password))
         mysql.connection.commit()
         cursor.close()
         
-        # Redirigir al login con un mensaje de éxito
+        #Redirigir al login con un mensaje.
         return redirect(url_for('login', message='Registro exitoso. Puedes iniciar sesión ahora.'))  # Redirige al login después de registrarse
 
-    return render_template('register.html')  # Muestra el formulario de registro
+    return render_template('register.html')  
 
 @app.route('/indice')
 def indice():
@@ -119,7 +117,7 @@ def rcanceladas():
     reparaciones_canceladas = canceladas(mysql)  
     return render_template ('canceladas.html', reparaciones_canceladas=reparaciones_canceladas,usuarios_dict=usuarios_dict,clientes_dict=clientes_dict)
 
-@app.route('/usuarios')  # Lista de usuarios (solo admin)
+@app.route('/usuarios')  #Lista de usuarios (solo admin)
 def usuarios():
     if 'username' not in session or session['rol'] != 1:
         return redirect(url_for('login'))
@@ -147,18 +145,18 @@ def edit_usuario(id):
         cursor.close()
         return redirect(url_for('usuarios'))
 
-    else:  # Caso GET: mostrar el formulario de edición
+    else:  #Caso GET: mostrar el formulario de edición
         cursor.execute("SELECT * FROM usuarios WHERE id_usuarios=%s AND existe=1", (id,))
-        usuario = cursor.fetchone()  # Obtiene el usuario específico por ID
+        usuario = cursor.fetchone()  #Obtiene el usuario específico por ID
 
-        if usuario: # Verifica si el usuario existe.
+        if usuario: #Verifica si el usuario existe.
             cursor.execute("SELECT * FROM usuarios WHERE existe=1")
             usuarios = cursor.fetchall()
             cursor.close()
             return render_template('edit_usuario.html', usuario=usuario, usuarios=usuarios)
         else:
             cursor.close()
-            return "Usuario no encontrado", 404 # Mejor manejo de error.
+            return "Usuario no encontrado", 404 #Mejor manejo de error.
 
 @app.route('/edit_cliente/<int:id>', methods=['GET', 'POST'])
 def edit_cliente(id):
@@ -179,11 +177,11 @@ def edit_cliente(id):
         cursor.close()
         return redirect(url_for('clientes'))
 
-    else:  # Caso GET: mostrar el formulario de edición
+    else:  #muestra el formulario de edición
         cursor.execute("SELECT * FROM clientes WHERE id_clientes=%s AND existe=1", (id,))
-        cliente = cursor.fetchone()  # Obtiene el usuario específico por ID
+        cliente = cursor.fetchone()  #Obtiene el usuario específico por ID
 
-        if cliente: # Verifica si el usuario existe.
+        if cliente: #Verifica si el usuario existe.
             cursor.execute("SELECT * FROM clientes WHERE existe=1")
             clientes = cursor.fetchall()
             cursor.close()
@@ -215,9 +213,9 @@ def actualizar(id):
         cursor.execute(sql, datos)
         conn.commit()
         cursor.close()
-        return redirect(url_for('reparaciones'))  # Redirige a la lista de reparaciones
+        return redirect(url_for('reparaciones'))  #Redirige a la lista de reparaciones
 
-    else:  # Lógica para mostrar el formulario si es GET
+    else:  #Lógica para mostrar el formulario si es GET
         cursor.execute("SELECT * FROM reparaciones WHERE id_reparaciones=%s AND existe=1", (id,))
         reparaciones = cursor.fetchall()
 
@@ -232,19 +230,19 @@ def actualizar(id):
         
         return render_template('reparaciones.html', reparaciones=reparaciones, usuarios=usuarios, clientes=clientes,usuarios_dict=usuarios_dict,clientes_dict=clientes_dict,  modo_editar=True)#
 
-@app.route('/borrar/<int:id>', methods=['GET'])  # Ahora acepta solicitudes GET
+@app.route('/borrar/<int:id>', methods=['GET'])  #Ahora acepta solicitudes GET
 def borrar(id):
     conn = mysql.connection
     cursor = conn.cursor()
 
     try:
-        # Ejecuta la consulta UPDATE para cambiar el estado de "existe" a 0
+        #Ejecuta la consulta UPDATE para cambiar el estado de "existe" a 0
         sql = "UPDATE reparaciones SET existe = 0 WHERE id_reparaciones = %s"
         cursor.execute(sql, (id,))
-        conn.commit()  # Guarda los cambios en la base de datos
+        conn.commit()  #Guarda los cambios en la base de datos
     except Exception as e:
         print(f"Error al cambiar estado de reparación: {e}")
-        conn.rollback()  # Revierte los cambios en caso de error
+        conn.rollback()  #Revierte los cambios en caso de error
     finally:
         cursor.close()
 
@@ -255,7 +253,7 @@ def borrar(id):
 def crear_usuario():
     if request.method == 'POST':
         nombre = request.form['nombre']
-        password = request.form['password']  # Contraseña en texto plano
+        password = request.form['password']  #Contraseña en texto plano
         email = request.form['email']
         admin = request.form['admin']
         existe = request.form['existe']
@@ -288,14 +286,14 @@ def crear_cliente():
         
         
 
-        # cursor = mysql.connection.cursor()
+        #cursor = mysql.connection.cursor()
         sql = "INSERT INTO clientes (nombre, email, telefono, existe, id_usuario) VALUES (%s, %s, %s, %s, %s)"
         datos = (nombre, email, telefono, existe, id_usuario)
         cursor.execute(sql, datos)
         conn.commit()
         cursor.close()
 
-        return redirect(url_for('clientes'))  # Redirige a la lista de clientes
+        return redirect(url_for('clientes'))
 
     return render_template('crear_cliente.html',usuarios_dict=usuarios_dict,clientes_dict=clientes_dict)
 
@@ -306,7 +304,7 @@ def crear_reparacion():
 
     cursor.execute("SELECT * FROM usuarios WHERE existe=1")
     usuarios = cursor.fetchall()
-    usuarios_dict = {usuario[0]: usuario[1] for usuario in usuarios}# Creamos diccionarios para mapear IDs a nombres. Sólo acá no me sirven, necesito ponerlos en /reparaciones también, sino la variable no existe en la tabla principal.
+    usuarios_dict = {usuario[0]: usuario[1] for usuario in usuarios} #Creamos diccionarios para mapear IDs a nombres. Sólo acá no me sirven, necesito ponerlos en /reparaciones también, sino la variable no existe en la tabla principal.
     cursor.execute("SELECT * FROM clientes WHERE existe=1")
     clientes = cursor.fetchall()
     clientes_dict = {cliente[0]: cliente[1] for cliente in clientes}
@@ -318,7 +316,7 @@ def crear_reparacion():
     if request.method == 'POST':  # Lógica de actualización si es POST
         fecha_reparacion = request.form['txtFecha']
         descripcion = request.form['txtDescripcion']
-        costo = request.form['txtCosto']  # No es request.files, es request.form para campos de texto
+        costo = request.form['txtCosto']  #No es request.files, es request.form para campos de texto
         existe = request.form['txtExiste']
         estado = request.form['txtEstado']
         id_clientes = request.form['txtCliente']
@@ -330,7 +328,7 @@ def crear_reparacion():
         cursor.execute(sql, datos)
         conn.commit()
         cursor.close()
-        return redirect(url_for('reparaciones'))  # Redirige a la lista de reparaciones
+        return redirect(url_for('reparaciones'))  #Redirige a la lista de reparaciones
     return render_template('crear_reparacion.html', reparaciones=reparaciones, usuarios=usuarios, clientes=clientes, usuarios_dict=usuarios_dict, clientes_dict=clientes_dict)
 
 @app.route('/reparaciones')
@@ -342,10 +340,10 @@ def reparaciones():
     usuarios_dict, clientes_dict = diccionario_nombres(mysql) #Lo agrego en cada route que necesite el reemplazo de usuarios. Si lo uso arriba no tiene contexto.
 
     if session['rol'] == 1:
-        # Admin ve todas las reparaciones con "existe" = 1
+        #Admin ve todas las reparaciones con "existe" = 1
         cursor.execute("SELECT * FROM reparaciones WHERE existe = 1")
     else:
-        # Usuario normal ve sus reparaciones con "existe" = 1
+        #Usuario normal ve sus reparaciones con "existe" = 1
         cursor.execute("SELECT * FROM reparaciones WHERE id_usuarios = %s AND existe = 1", (session['user_id'],))
 
     reparaciones = cursor.fetchall()
@@ -355,7 +353,7 @@ def reparaciones():
 
 @app.route('/logout')
 def logout():
-    session.clear()  # Limpia toda la sesión
+    session.clear()  #Limpia toda la sesión
     return redirect(url_for('indice'))
 
 @app.errorhandler(404)

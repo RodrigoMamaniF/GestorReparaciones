@@ -46,7 +46,7 @@ def contar_reparaciones_pendientes(mysql):
         total_reparaciones = cursor.fetchone()[0]
     except Exception as e:
         print(f"Error al contar reparaciones: {e}")
-        total_reparaciones = 0  # O un valor por defecto
+        total_reparaciones = 0
     finally:
         cursor.close()
     return total_reparaciones
@@ -67,7 +67,7 @@ def contar_rep_por_estado(mysql, estado):
         total_reparaciones = cursor.fetchone()[0]
     except Exception as e:
         print(f"Error al contar reparaciones: {e}")
-        total_reparaciones = 0  # O un valor por defecto
+        total_reparaciones = 0 
     finally:
         cursor.close()
     return total_reparaciones
@@ -156,7 +156,7 @@ def contar_usuarios(mysql):
         total_usuarios = cursor.fetchone()[0]
     except Exception as e:
         print(f"Error al contar usuarios: {e}")
-        total_usuarios = 0  # O un valor por defecto
+        total_usuarios = 0  
     finally:
         cursor.close()
     return total_usuarios

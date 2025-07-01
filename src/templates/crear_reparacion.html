@@ -27,7 +27,8 @@
             {%else%}
             <div class="form-group row col-sm-8 mb-2">
                 <p class="col-sm-2">Usuario:</p>
-                <input  type="int" name="txtUser" id="txtUser"/> {{session['user_id'] }}  <br />
+                <input type="hidden" name="txtUser" value="{{ session['user_id'] }}">
+                <p > {{session['username'] }}  </p>
                 <!-- Arriba está adaptado. -->
             </div>
             {%endif%}
