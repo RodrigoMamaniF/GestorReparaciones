@@ -13,7 +13,7 @@
         <thead>
             <tr>
                 <th>Nombre</th>
-                <th>Admin</th>
+                <th>Rol/Permisos</th>
                 <th>Email</th>
                 <th>Opciones</th>
             </tr>
@@ -22,8 +22,20 @@
             {% for usuario in usuarios %}
             <tr>
                 <td>{{ usuario[1] }}</td>
-                <td>{{ usuario[3] }}</td>
-                <td>{{ usuario[5] }}</td>
+                <td>
+                    {% if usuario[3]== 1 %}
+                        Admin
+                    {% else %}
+                        Usuario
+                    {% endif %}
+                </td>
+                <td>
+                    {%if usuario[5]== None%}
+                        Sin email registrado
+                    {%else%}
+                        {{ usuario[5] }}
+                    {%endif%}
+                </td>
                 <td>
                     <a href="/edit_usuario/{{ usuario[0] }}" class="btn btn-warning">Editar</a> |
                     <a class="btn btn-danger" onclick="return confirm('¿Desea borrar la reparación?')"

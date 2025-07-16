@@ -27,9 +27,9 @@
 
     <ul class="nav-links desktop-nav">
       {% if session['rol'] == 1 %}
-      <li><a href="#popular" id="user-name" class="admin-link">Administrador</a></li>
+      <li><a id="user-name" class="admin-link">Administrador</a></li>
       {%else%}
-      <li><a href="#popular" id="user-name" class="admin-link">Usuario</a></li>
+      <li><a id="user-name" class="admin-link">Usuario</a></li>
       {%endif%}
       <li><a href="/logout" id="logout-button" class="btn-cac"><i class="fas fa-sign-in-alt"></i> Cerrar Sesión</a></li>
     </ul>
