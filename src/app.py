@@ -301,16 +301,21 @@ def crear_cliente():
 def crear_reparacion():
     conn = mysql.connection
     cursor = conn.cursor()
-
+    
     cursor.execute("SELECT * FROM usuarios WHERE existe=1")
     usuarios = cursor.fetchall()
-    usuarios_dict = {usuario[0]: usuario[1] for usuario in usuarios} #Creamos diccionarios para mapear IDs a nombres. Sólo acá no me sirven, necesito ponerlos en /reparaciones también, sino la variable no existe en la tabla principal.
-    cursor.execute("SELECT * FROM clientes WHERE existe=1")
-    clientes = cursor.fetchall()
-    clientes_dict = {cliente[0]: cliente[1] for cliente in clientes}
+    usuarios_dict = {usuario[0]: usuario[1] for usuario in usuarios} 
+  
+    if session['rol']==1:
+        cursor.execute("SELECT * FROM clientes WHERE existe=1")
+        clientes = cursor.fetchall()
+        clientes_dict = {cliente[0]: cliente[1] for cliente in clientes}
+    else:
+        cursor.execute("SELECT * FROM clientes WHERE existe=1 and id_usuario=%s",(session['user_id'],))
+        clientes = cursor.fetchall()
+        clientes_dict = {cliente[0]: cliente[1] for cliente in clientes}
 
     usuarios_dict, clientes_dict = diccionario_nombres(mysql)
-    
     
     # ... (código para obtener usuarios y clientes) ...
     if request.method == 'POST':  # Lógica de actualización si es POST
