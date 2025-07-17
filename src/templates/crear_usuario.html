@@ -8,21 +8,21 @@
 {% block contenidoMain %}
 <div class="contenido">
     <div>
-        <h3>Agregar cliente</h3>
+        <h3>Agregar usuario</h3>
     </div>
 
     <form method="post" action="/crear_usuario">
         <div class="form-group row col-sm-8 mb-2">
             <p class="col-sm-2">Nombre:</p>
-            <input class="form-control col-sm-6" type="text" name="nombre" id="nombre" required /><br />
+            <input class="form-control col-sm-6" type="text" name="nombre" id="nombre" required><br />
         </div>
         <div class="form-group row col-sm-8 mb-2">
             <p class="col-sm-2">Contraseña:</p>
-            <input class="form-control col-sm-6" type="password" name="password" id="password" required /><br />
+            <input class="form-control col-sm-6" type="password" name="password" id="password" required><br />
         </div>
         <div class="form-group row col-sm-8 mb-2">
             <p class="col-sm-2">Email:</p>
-            <input class="form-control col-sm-6" type="email" name="email" id="email" /><br />
+            <input class="form-control col-sm-6" type="email" name="email" id="email"><br />
         </div>
         <div class="form-group row col-sm-8 mb-2">
             <p class="col-sm-2">Admin:</p>
@@ -31,14 +31,8 @@
                 <option value="1">Si</option>
             </select><br>
         </div>
-        <div class="form-group row col-sm-8 mb-2">
-            <p class="col-sm-2">Existe:</p>
-            <select class="form-select form-select-sm" name="existe" id="existe">
-                <option value="1" selected>Si</option>
-                <option value="0">No</option>
-            </select><br>
-        </div>
-        <input class="btn btn-success mb-3" type="submit" value="Agregar Usuario" />
+        <input type="hidden" name="existe" value="1">
+        <input class="btn btn-success mb-3" type="submit" value="Agregar Usuario">
     </form>
 
 

@@ -28,7 +28,7 @@
             <div class="form-group row col-sm-8 mb-2">
                 <p class="col-sm-2">Usuario:</p>
                 <input type="hidden" name="txtUser" value="{{ session['user_id'] }}">
-                <p > {{session['username'] }}  </p>
+                <h4  class="text-center" > {{session['username'] }}  </h4>
                 <!-- Arriba está adaptado. -->
             </div>
             {%endif%}
@@ -55,16 +55,14 @@
                 <p class="col-sm-2">Costo:</p>
                 <input class="form-control" type="number" name="txtCosto" id="txtCosto" required /><br />
             </div>
-            <div class="form-group row col-sm-8 mb-2">
-                <p class="col-sm-2">Existe:</p>
-                <select class="form-select form-select-sm" name="txtExiste" id="txtExiste">
-                    <option value="1" selected>Si</option>
-                    <option value="0">No</option>
-                </select><br>
-            </div>
+            <input type="hidden" name="txtExiste" value="1">
             <div class="form-group row col-sm-8 mb-2">
                 <p class="col-sm-2">Estado:</p>
-                <input class="form-control" type="text" name="txtEstado" id="txtEstado" value="pendiente" required /><br />
+                <select name="txtEstado" id="txtEstado" class="form-control">
+                    <option value="Pendiente">Pendiente   </option>
+                    <option value="Finalizado">Finalizado </option>
+                    <option value="Cancelado">Cancelado   </option> <!--No importa la mayúscula, al discriminar el tipo de estado lo toma bien.-->
+                </select>
             </div>
             <input class="btn btn-success mb-3" type="submit" value="Agregar Reparación" />
         </form>
