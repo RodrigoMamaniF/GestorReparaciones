@@ -22,4 +22,18 @@
  - En una Carpeta nueva clona el repositorio con GitBash:
  - git clone https://github.com/RodrigoMamaniF/GestorReparaciones.git
  - Abre la carpeta con Visual Studio Code, en la terminal crea un entorno virtual para instalar los requerimientos del proyecto:
- - virtualenv -p 
+ - virtualenv -p python3 GestorEnv (u otro nombre, es para el entorno)
+ - pip install -r requirementsGestor.txt
+ - Con XAMPP, activamos Apache y MySQL, y vamos al administrador desde el navegador: localhost/phpmyadmin/
+ - Creamos una nueva BD desde phpMyAdmin y lo llamamos 'flask_login' para que lo tome el archivo python config, e importamos ...\GestorReparaciones\src\bd\flask_login 
+ - Listo!
+## Capturas:
+ - Vista Usuario:
+   <img width="1346" height="682" alt="3" src="https://github.com/user-attachments/assets/4454f230-9b87-4b01-bd29-f216ddf9a447" />
+ - Vista Admin:
+   <img width="1346" height="674" alt="5 admin" src="https://github.com/user-attachments/assets/6cdacd56-d16c-47b0-9c59-dfd89656be00" />
+ - Agregar Reparación:
+   <img width="1334" height="678" alt="10 Agregar reparación" src="https://github.com/user-attachments/assets/84c34450-300b-4a0e-8a25-f8b8fe4940fa" />
+
+   
+
