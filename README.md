@@ -1,4 +1,4 @@
-<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/facad1ce-7690-4258-9a5f-db95af8233f9" /># Gestor de Reparaciones para Técnicos
+# Gestor de Reparaciones para Técnicos
 
 ## 📍Introducción
   Esta página cuenta con un inicio a modo de publicidad, como si se tratara de una tienda en específico, pero cuenta con un sistema que por medio de un logueo o registro se puede acceder a la base de datos propia de la página, donde se puede cargar datos de reparaciones y actualizar su estado en: Pendiente, Finalizado o Cancelado. 
